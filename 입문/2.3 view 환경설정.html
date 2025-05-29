@@ -1,8 +1,7 @@
 Welcome page 만들기
 
-//main - static - 새 파일 만들기 - index.html
-
-
+// main - static - 새 파일 만들기 - index.html
+* index.html
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -14,3 +13,51 @@ Hello
 <a href="/hello">hello</a>
 </body>
 </html>
+
+--------------------------------------------------------------------------------------
+
+스트링 부트가 제공하는 Welcome page 기능
+spring.io - projects - spring boot - learn - 2.3.1 ref - welcome.page (index.html)
+- static.index.html 을 올려두면 welcome.page 기능을 제공한다 
+
+정적 페이지 _ 적어놓은 코드를 웹에게 던져준다 생각하기
+
+---------------------------------------------------------------------------------------
+
+thymeleaf 템플릿 엔진
+//hello.hellospring - 패키지 추카 .controller - HelloController 파일 추가
+* HelloController.java
+package hello.hello_spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloController {
+    @GetMapping("Hello")
+    public String hello(Model model){
+        model.addAttribute("data","hello!");
+        return "hello";
+    }
+}
+
+// templates - hello.html
+* hello.html
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="안녕하세요. + ${data}" >안녕하세요. 손님</p>
+</body>
+</html>
+
+--------------------------------------------------------------------------------------
+
+구도 파악
+model (data:hello!!)
+return “hello” -> hello.html 값을 넘기면서 실행시켜라
+
