@@ -1,0 +1,13 @@
+빌드하고 실행하기
+
+● cd study
+● cd hello-spring
+● ./gradlew bulid
+
+● cd build
+● cd libs
+● java -jar (위에 나온 jar 복붙)
+● ls -arlth
+
+🔎 잘 안될 경우
+./gradlew clean
