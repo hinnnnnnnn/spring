@@ -1,2 +1,26 @@
 스프링 부트 정적 컨텐츠 기능
 - 사이트 들어가서 static contents 찾기 (자동으로 제공)
+
+static - hello-static.html 파일 생성
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>static content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+정적 컨텐츠 입니다.
+</body>
+</html>
+
+💡결과 확인
+http://localhost:8080/hello-static.html
+
+⛓️과정
+-> 내장 톰캣 서버가 요청을 받고 스프링한테 넘김
+hello-static 관련 컨트롤러 x
+-> 내장 톰캣 서버
+resources: static/hello-static.html
+-> hello-static.html
+-> 웹 브라우저
