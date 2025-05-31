@@ -1,4 +1,3 @@
-
 MVC : model, view, controller
 
 📍 HelloController.java에 추가
@@ -20,10 +19,12 @@ MVC : model, view, controller
 💡 command p : 옵션보기
 
 🔎 결과 확인 : http://localhost:8080/hello-mvc?name=spring
+** name-spring 미입력시, 오류창 뜸
 
 🔎 동작 방식 : name = spring 값이 넘어가서 name에 남김
 templates.html에 모델인 ${name}에 치환
 
-브라우저 주소창에는 요청한 경로인 hello-mvc가 그대로 표시되며, 클라이언트는 여전히 hello-mvc?name=spring라고 인식합니다. 
-그러나 서버에서는 이 요청을 처리하여 hello-template.html 파일과 연결된 내용을 클라이언트에게 반환합니다. 이 과정은 MVC 패턴에서 일반적인 동작 방식입니다.
+브라우저 주소창에는 요청한 경로인 hello-mvc가 그대로 표시되며, 클라이언트는 여전히 hello-mvc?name=spring라고 인식
+그러나 서버에서는 이 요청을 처리하여 hello-template.html 파일과 연결된 내용을 클라이언트에게 반환
+이 과정은 MVC 패턴에서 일반적인 동작 방식
 
