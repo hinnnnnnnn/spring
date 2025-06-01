@@ -1,0 +1,13 @@
+1. html로 내리냐
+2. api로 내리냐
+
+📍HelloController.java 추가
+
+    @GetMapping("hello-string")
+    @ResponseBody
+    public String helloString(@RequestParam("name") String name) {
+        return "hello" + name; //"hello spring"
+    }
+
+* 요청한 문자가 그대로 내려감
+* 소스보기하면 html태그 하나도 없고 문자 그대로
