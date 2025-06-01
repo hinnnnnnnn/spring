@@ -1,7 +1,7 @@
 1. html로 내리냐
 2. api로 내리냐
 
-📍HelloController.java 추가
+📍 HelloController.java 추가
 
     @GetMapping("hello-string")
     @ResponseBody
@@ -12,7 +12,9 @@
 * 요청한 문자가 그대로 내려감
 * 소스보기하면 html태그 하나도 없고 문자 그대로
 
- @GetMapping("hello-api")
+📍 HelloController.java 추가
+
+    @GetMapping("hello-api")
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name) {
         Hello hello = new Hello();
@@ -27,3 +29,5 @@
         }
 
     }
+
+* command + shift + Enter : 자동으로 마무리
