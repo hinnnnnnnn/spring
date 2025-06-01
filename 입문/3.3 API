@@ -18,6 +18,8 @@
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name) {
         Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
     }
     
 
@@ -26,6 +28,10 @@
 
         private String getName() {
             return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
 
     }
