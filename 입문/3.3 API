@@ -11,3 +11,19 @@
 
 * 요청한 문자가 그대로 내려감
 * 소스보기하면 html태그 하나도 없고 문자 그대로
+
+ @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name) {
+        Hello hello = new Hello();
+    }
+    
+
+    static class Hello {
+        private String name;
+
+        private String getName() {
+            return name;
+        }
+
+    }
