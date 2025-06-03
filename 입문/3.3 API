@@ -43,3 +43,11 @@
 http://localhost:8080/hello-api?name=spring!!!
 -> JSON 방식 
 -> key : name, value : sping!!!
+
+📎 과정
+1. 웹 브라우저에서 localhost:8080 하고 hello api 작성
+2. 톰캣 내장 서버에서  Hello api가 spring에 던짐
+3. response body 존재 
+4. default는 json반식으로 데이터를 만들어서 http응답에 반환하겠다
+* 단순 문자면 StringConverter가 동작
+   객체면 JsonConverter가 기본적으로 동작
