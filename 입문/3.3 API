@@ -4,12 +4,12 @@
 📍 HelloController.java 추가
 
     @GetMapping("hello-string")
-    @ResponseBody
+    @ResponseBody ⭐️ http에서 body부분에 직접 넣어주겠다 ⭐️
     public String helloString(@RequestParam("name") String name) {
         return "hello" + name; //"hello spring"
     }
 
-* 요청한 문자가 그대로 내려감
+* 요청한 문자가 그대로 
 * 소스보기하면 html태그 하나도 없고 문자 그대로
 
 📍 HelloController.java 추가
