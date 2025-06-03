@@ -44,6 +44,10 @@ http://localhost:8080/hello-api?name=spring!!!
 -> JSON 방식 
 -> key : name, value : sping!!!
 
+✅ JSON이란?
+JSON (JavaScript Object Notation)
+👉 데이터를 주고받을 때 사용하는 가볍고 읽기 쉬운 형식이야.
+
 📎 과정
 1. 웹 브라우저에서 localhost:8080 하고 hello api 작성
 2. 톰캣 내장 서버에서  Hello api가 spring에 던짐
