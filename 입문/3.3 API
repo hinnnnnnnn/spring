@@ -51,3 +51,12 @@ http://localhost:8080/hello-api?name=spring!!!
 4. default는 json반식으로 데이터를 만들어서 http응답에 반환하겠다
 * 단순 문자면 StringConverter가 동작
    객체면 JsonConverter가 기본적으로 동작
+
+📁 @ResponseBody` 를 사용
+HTTP의 BODY에 문자 내용을 직접 반환
+`viewResolver` 대신에 `HttpMessageConverter` 가 동작
+기본 문자처리: `StringHttpMessageConverter`
+기본 객체처리: `MappingJackson2HttpMessageConverter`
+byte 처리 등등 기타 여러 HttpMessageConverter가 기본으로 등록되어 있음
+
+요즘에는 Json만 그대로 사용
