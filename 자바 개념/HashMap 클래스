@@ -1,0 +1,6 @@
+📦 HashMap
+Key(키) 와 Value(값) 를 쌍으로 저장하는 자료구조
+예: "학생번호 → 이름", "ID → 회원 객체" 이런 식으로 연결함.
+  ** Long(회원 ID)을 키로, Member 객체를 값으로 저장하는 맵
+    store.put(member.getId(), member); // 저장
+    store.get(id); // ID로 회원 찾기
