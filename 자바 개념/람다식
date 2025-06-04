@@ -1,0 +1,13 @@
+📦 람다식
+간단한 함수 표현 방식
+
+📍 일반적인 방식
+for (Member m : members) {
+    if (m.getName().equals("홍길동")) {
+        return m;
+    }
+}
+⬇️ 람다식으로 바꾸면?
+members.stream()
+       .filter(m -> m.getName().equals("홍길동"))
+       .findAny();
