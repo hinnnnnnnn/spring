@@ -5,3 +5,4 @@
 💡 sou : s.o.p 바로 출력
 💡 shift + f + 6 : 리네임 
 💡 control + T : 리펙터리 메뉴 🔎 메서드 생성 command + option + M
+💡 생성자 부분에 command + shift + T : 새 테스트 생성 (멤버 전체 체크 후 생성 하면 자동으로 test가 생성됨)
