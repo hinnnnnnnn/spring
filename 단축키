@@ -1,7 +1,7 @@
 💡 command + shift + Enter : 자동으로 마무리
 💡 command + n : 메서드 자동 생성
 💡 command p : 옵션보기
-💡 option + enter : 메모리 구현, import
+💡 option + enter : 메모리 구현, import 🔎 Assertions 생략
 💡 sou : s.o.p 바로 출력
 💡 shift + f + 6 : 리네임 
 💡 control + T : 리펙터리 메뉴 🔎 메서드 생성 command + option + M
