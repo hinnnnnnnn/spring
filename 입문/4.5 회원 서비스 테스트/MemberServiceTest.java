@@ -1,3 +1,5 @@
+💡 생성자 부분에 command + shift + T : 새 테스트 생성 (멤버 전체 체크 후 생성 하면 자동으로 test가 생성됨)
+
 package hello.hello_spring.service;
 
 import hello.hello_spring.domain.Member;
