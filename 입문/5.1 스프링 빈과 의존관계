@@ -9,21 +9,24 @@ import hello.hello_spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-@Controller
+@Controller //⚙️Spring MVC의 컨트롤러 역할, 웹 요청을 받아서 처리하고, 응답 반환
 public class MemberController {
 
     📍//private final MemberService memberService = new MemberService();
         memberController 말고 다른 여러 컨트롤러들이 MemberService를 가져다 쓸 수 있다는 문제 발생
-        예 : 주문 컨트롤러에서 MemberService를 사용
+        예: 주문 컨트롤러(OrderController)에서도 MemberService를 사용하고 싶을 경우
+        → 각각 new MemberService()를 하면 객체가 여러 개 생성됨
+        → 메모리 낭비, 상태 공유 문제 등 발생 가능
         따라서 스프링 컨테이너에 등록하고 사용
 
-    private final MemberService memberService;
+    private final MemberService memberService; //MemberService 타입의 의존성(Dependency) 를 필드로 선언
 
     @Autowired //⭐️ memberService를 스프링이 스프링 컨테이너에 있는 memberService를 가져다가 연결 시켜줌
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
-
+    //Spring이 MemberService 객체를 자동으로 주입(Injection)
+    //주입 대상인 MemberService는 Spring이 스프링 컨테이너에 등록한 Bean이어야 함
 }
 
 //command + N : 생성 (생성자, 메서드 등등)
