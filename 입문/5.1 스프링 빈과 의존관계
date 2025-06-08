@@ -1,0 +1,55 @@
+스프링 빈을 등록하고, 의존관계 설정
+
+package hello.hello_spring.controller;
+
+import hello.hello_spring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MemberController {
+
+    //private final MemberService memberService = new MemberService();
+    //memberController 말고 다른 여러 컨트롤러들이 MemberService를 가져다 쓸 수 있다는 문제 발생
+    //예 : 주문 컨트롤러에서 MemberService를 사용
+    //따라서 스프링 컨테이너에 등록하고 사용
+
+    private final MemberService memberService;
+
+    @Autowired //memberService를 스프링이 스프링 컨테이너에 있는 memberService를 가져다가 연결 시켜줌
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
+}
+
+//command + N : 생성 (생성자, 메서드 등등)
+//오류 발생 : Consider defining a bean of type 'hello.hello_spring.service.MemberService' in your configuration.
+//'memberService가 스프링 빈으로 등록되어 있지 않음'
+// -> MemberService에 @Service 추가 ,
+//    @Autowired
+//    public MemberService(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    } 추가
+// -> MemoryMemberRepository에 @Repository 추가
+
+//스프링 빈 등록
+//스프링 컨테이너
+//helloController -> memberService -> memberRepository
+//:memberService와 memberRepository가 스프링 컨테이너에 스프링 빈으로 등록
+//참고 : 스프링은 스프링 컨테이너에 스프링 빈을 등록할 떄, 기본으로 싱글톤으로 등록(유일하게 하나만 등록해서 공유)
+//따라서 같은 스프링 빈이면 모두 같은 인스턴스, 설정으로 싱글톤 아니게 설정 가능하지만, 특별한 경우를 제외하면 대부분 싱글톤 사용
+
+//스프링 빈을 등록하는 2가지 방법
+//1. 컴포넌트 스캔과 자동 의존관계 설정 (지금 사용한 방법)
+//2. 자바 코드로 직접 스프링 빈 등록
+
+//컴포넌트 스캔과 자동 의존관계 설정
+//@Component : 애노테이션이 있으면 스프링 빈으로 자동 등록 됨
+//@Controller : 컨트롤러가 스프링 빈으로 자동 등록된 이유도 컴포넌트 스캔 떄문
+//@Component를 포함하는 다음 애노테이션도 스프링 빈을 자동 등록
+//@Controller, @Service, @Repository
+
+//그럼 아무곳에서나 사용가능 하냐 ?
+// no..
+// HelloSpringApplication에서 지정된 패키지 hello.hellospring 하위는 전부 스프링이 검색하여 등록함 (컴포넌트 스캔의 대상)
