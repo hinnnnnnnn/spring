@@ -1,0 +1,39 @@
+⛓️‍💥hello.hello_spring - controller - HomeController.java
+📌HomeController.java
+
+package hello.hello_spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+}
+
+✅우선 순위
+localhost:8080실행 시키면 정적 리소스 전에 homeController.java가 실행됨
+
+⛓️‍💥resources - templates - home.html
+📌home.html
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <div>
+        <h1>Hello Spring</h1>
+        <p>회원 기능</p>
+        <p>
+            <a href="/members/new">회원 가입</a>
+            <a href="/members">회원 목록</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
