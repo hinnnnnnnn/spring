@@ -1,1 +1,58 @@
+⛓️‍💥hello.hello_spring - controller - MemberForm.java
+📌MemberForm.java
 
+package hello.hello_spring.controller;
+
+public class MemberForm {
+    private String name; //✅HTML form에서 <input name="name"> 입력값을 받을 때 사용
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+--------------------------------------------------------------------------------------------
+📌MemberController에 추가
+ 🔎 사용자가 회원 가입을 하기 위해 접근할 때 실행
+ @GetMapping("/members/new") //✅HTTP GET 요청을 처리
+    public String createForm() {
+        return "members/createMemberForm"; //✅members/createMemberForm라는 이름의 뷰(View) 를 반환
+    }
+ 🔎 사용자가 폼에 입력한 데이터를 서버로 제출했을 때 실행
+ @PostMapping("/members/new") //✅HTTP POST 요청을 처리
+    public String create(MemberForm form) {
+        Member member = new Member();
+        member.setName(form.getName()); //MemberForm 객체는 폼에서 넘어온 데이터를 자동으로 받아
+
+        memberService.join(member); //새로운 Member 객체를 만들어 이름을 설정한 후, memberService.join(member)를 통해 회원 등록 처리
+        return "redirect:/"; //처리 후 홈페이지(/)로 리다이렉트
+    }
+
+--------------------------------------------------------------------------------------------
+⛓️‍💥resources - templates - members (package) - createMemberForm.html
+📌createMemberForm.html
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div>
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------
+💡 전체 흐름 요약
+사용자가 /members/new에 접속 → createForm()이 실행되어 폼 화면 보여줌
+사용자 입력 후 제출 → create() 실행 → 회원 가입 처리 → 홈으로 이동
