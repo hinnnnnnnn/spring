@@ -1,12 +1,13 @@
 📌MemberConroller에 추가
+🔎전체 회원 목록을 조회하고, 뷰에 데이터를 전달하여 화면에 표시
 @GetMapping("/members")
     public String List(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList";
+        List<Member> members = memberService.findMembers(); //findMembers()는 보통 데이터베이스에 저장된 회원 목록을 반환
+        model.addAttribute("members", members); //조회한 회원 리스트를 뷰(View)에 전달하기 위해 Model 객체에 저장
+        return "members/memberList"; //템플릿 엔진(예: Thymeleaf)은 resources/templates/members/memberList.html을 찾아 렌더링
     }
 
-
+--------------------------------------------------------------------------------------------
 ⛓️‍💥resources - templates - members - memberList.html
 📌memberList.html
 
@@ -23,9 +24,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="member : ${members}">
+            <tr th:each="member : ${members}"> //컨트롤러에서 전달된 members 리스트를 반복
                 <td th:text="${member.id}"></td>
-                <td th:text="${member.name}"></td>
+                <td th:text="${member.name}"></td> //각 Member 객체의 id와 name을 출력
             </tr>
             </tbody>
         </table>
