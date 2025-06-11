@@ -1,3 +1,5 @@
+⭐️JdbcTemplate을 사용하도록 스프링 설정 변경
+
 package hello.hello_spring;
 
 import hello.hello_spring.repository.MemberRepository;
@@ -25,6 +27,7 @@ public class SpringConfig {
         return new MemberService(memberRepository());
     }
 
+    //✅추가 및 주석 처리
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
