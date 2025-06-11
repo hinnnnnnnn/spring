@@ -1,3 +1,9 @@
+순수 Jdbc와 동일한 환경설정
+스프링 JdbcTemplate과 MyBatis 같은 라이브러리는 JDBC API에서 본 반복 코드를 대부분 제거, 하지만 SQL은 직접 작성
+    
+⛓️‍💥 hello.hello_spring - repository - jdbcTemplateMemberRepository
+📌 jdbcTemplateMemberRepository.java
+    
 package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
@@ -72,3 +78,6 @@ public class jdbcTemplateMemberRepository implements MemberRepository{
             }
         }
  */
+
+
+MemberServiceIntegrationTest에서 실행
