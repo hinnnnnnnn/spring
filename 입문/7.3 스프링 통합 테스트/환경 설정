@@ -1,0 +1,9 @@
+⚙️ build.gradle 파일에 jdbc, h2 데이터베이스 관련 라이브러리 추가
+implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+runtimeOnly 'com.h2database:h2'
+
+⚙️ 스프링 부트 데이터베이스 연결 설정 추가
+📌`resources - templates - application.properties`
+spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
