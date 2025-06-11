@@ -1,46 +1,37 @@
-
-
+⛓️‍💥 MemberServiceTest 복사해서 만들기 
+📌 MemberServiceIntegrationTest
+    
 package hello.hello_spring.service;
 
 import hello.hello_spring.domain.Member;
+import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest
-@Transactional  ⭐️ 오류 아직 미해결
+@SpringBootTest //✅스프링 컨테이너와 테스트를 함께 실행
+@Transactional //✅ 테스트 케이스에 이 애노테이션이 있으면, 테스트 시작 전에 트랜잭션을 시작하고, 테스트 완료 후에 항상 롤백
+                     이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지 않음
 
 class MemberServiceIntegrationTest {
 
-    /* MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository(); */
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
 
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
-
-    //test는 한글로 작성해도 무방
     @Test
     void 회원가입() {
         //given
         Member member = new Member();
-        member.setName("hello");
+        member.setName("spring");
         //when
         Long saveId = memberService.join(member);
         //then
@@ -59,32 +50,11 @@ class MemberServiceIntegrationTest {
         member2.setName("spring");
 
         //when
-        //command + option + v : assertThrows위에서
         memberService.join(member1);
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
-        /*
-        try {
-            memberService.join(member2);
-            fail();
-        }
-        catch (IllegalStateException e) {
-            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-        }
-         */
-
-        //then
-    }
-
-
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
     }
 }
 
-//control + R : 이전에 실행했던거 그대로 다시 실행
+//h2에서 delete from member 후 실행
