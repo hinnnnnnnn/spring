@@ -7,3 +7,4 @@
 💡 control + T : 리펙터리 메뉴 🔎 메서드 생성 command + option + M
 💡 생성자 부분에 command + shift + T : 새 테스트 생성 (멤버 전체 체크 후 생성 하면 자동으로 test가 생성됨)
 💡 control + R : 이전에 실행했던거 그대로 다시 실행
+💡 command + b : 해당 파일 소스 보기
