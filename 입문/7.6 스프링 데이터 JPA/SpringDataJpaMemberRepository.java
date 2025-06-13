@@ -1,5 +1,5 @@
-hello.hello_spring - repository - SpringDataJpaMemberRepository인터페이스
-SpringDataJpaMemberRepository.java
+⛓️‍💥hello.hello_spring - repository - SpringDataJpaMemberRepository 인터페이스
+📌SpringDataJpaMemberRepository.java
   
 package hello.hello_spring.repository;
 
@@ -12,13 +12,6 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 
     //JPQL select m from Member where m.name = ?
     @Override
-    Optional<Member> findByName(String name); //name 과 같은 변수는 공통화 불가능 하기 때문에 findByName 사용
+    Optional<Member> findByName(String name); //✅name 과 같은 변수는 공통화 불가능하기 때문에 findByName 사용
 }
 
-
-//총 정리
-//순수 Jdbc : 쿼리 양이 어마어마함
-//스프링 통합 테스트 : Jdbc로 통합 테스트 만들기
-//스프링 JdbcTemplate : 반복되는 코드는 줄어들지만 sql은 직접 작성
-//JPA: 기본적인 CRUD는 하지만 쿼리는 작성할 필요 없음
-//스프링 JPA: 구현 클래스를 작성할 필요없이 인터페이스만으로 작성 끝
