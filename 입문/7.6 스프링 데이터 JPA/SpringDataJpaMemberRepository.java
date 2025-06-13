@@ -15,3 +15,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
     Optional<Member> findByName(String name); //✅name 과 같은 변수는 공통화 불가능하기 때문에 findByName 사용
 }
 
+💡 스프링 데이터 JPA 제공 기능
+• 인터페이스를 통한 기본적인 CRUD
+• `findByName()` , `findByEmail()` 처럼 메서드 이름 만으로 조회 기능 제공
+• 페이징 기능 자동 제공
