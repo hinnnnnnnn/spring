@@ -15,36 +15,15 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private final MemberRepository memberRepository; //option + enter -> 생성자 매개변수 초기화
+    private final MemberRepository memberRepository; //option + enter -> 생성자 매개변수 초기화 (아래 내용 자동으로 생성)
 
-    @Autowired
+    @Autowired //단독일때는 사용 안해도됨
     public SpringConfig(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
-
-//    private EntityManager em;
-//
-//    @Autowired
-//    public SpringConfig(EntityManager em) {
-//        this.em = em;
-//    }
-
-//    private DataSource dataSource;
-//
-//    @Autowired
-//    public SpringConfig(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
 
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
-
-//    @Bean
-//    public MemberRepository memberRepository() {
-//        //return new MemoryMemberRepository();
-//        //return new jdbcTemplateMemberRepository(dataSource);
-//        //return new JpaMemberRepository(em);
-//    }
 }
