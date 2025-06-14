@@ -4,7 +4,7 @@
 • 회원 가입 시간, 회원 조회 시간을 측정하고 싶다면?
 
 ⚙️ 스프링 컨테이너
-memberController(시간 측정 로직) -> memberService(시간 측정 로직) -> memverRepository(시간 측정 로직)
+helloController(시간 측정 로직) -> memberService(시간 측정 로직) -> memverRepository(시간 측정 로직)
 
 ⛓️‍💥hello.hello_spring - service - MemberService
 📌MemberService 수정
