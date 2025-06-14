@@ -1,0 +1,40 @@
+⚙️ 스프링 컨테이너
+helloController(시간 측정 로직) -> memberService(시간 측정 로직) -> memverRepository(시간 측정 로직)
+
+hello.hello_spring - apo - TimeTraceAop
+TimeTraceAop.java
+
+package hello.hello_spring.aop;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Aspect //Aop는 @Aspect를 적어줘야함
+@Component
+public class TimeTraceAop {
+    
+    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        System.out.println("START: " + joinPoint.toString());
+        try {
+            return joinPoint.proceed();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("END: " + joinPoint.toString() + " " + timeMs + "ms");
+        }
+    }
+}
+
+//            Object result = joinPoint.proceed(); (option + command + n : 인라인으로 합침 -> return joinPoint.proceed();)
+//            return result;
+
+
+//스프링 빈에 등록 or @Component
+//springConfig.java
+//@Bean
+//public TimeTraceAop timeTraceAop() {
+//    return new TimeTraceAop();
+//}
