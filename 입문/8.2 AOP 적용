@@ -1,5 +1,10 @@
+AOP 적용
+AOP: Aspect Oriented Programming
+공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern) 분리
+
 ⚙️ 스프링 컨테이너
-helloController(시간 측정 로직) -> memberService(시간 측정 로직) -> memverRepository(시간 측정 로직)
+TimeTraceAop (시간 측정 로직) 원하는 곳에 공통 관심 사항 적용 
+helloController -> memberService -> memverRepository
 
 hello.hello_spring - apo - TimeTraceAop
 TimeTraceAop.java
