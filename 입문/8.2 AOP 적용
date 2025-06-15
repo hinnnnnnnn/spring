@@ -1,13 +1,12 @@
-AOP 적용
-AOP: Aspect Oriented Programming
-공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern) 분리
+✅ AOP: Aspect Oriented Programming
+✅ 공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern) 분리
 
 ⚙️ 스프링 컨테이너
 TimeTraceAop (시간 측정 로직) 원하는 곳에 공통 관심 사항 적용 
 helloController -> memberService -> memverRepository
 
-hello.hello_spring - apo - TimeTraceAop
-TimeTraceAop.java
+⛓️‍💥 hello.hello_spring - apo - TimeTraceAop
+📌 TimeTraceAop.java
 
 package hello.hello_spring.aop;
 
@@ -20,6 +19,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimeTraceAop {
     
+    //✅ @Around : 해당 경로 하위 파일 출력
+    @Around("execution(* hello.hello_spring..*(..))") //START: execution(String hello.hello_spring.controller.MemberController.List(Model))
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         System.out.println("START: " + joinPoint.toString());
@@ -37,9 +38,65 @@ public class TimeTraceAop {
 //            return result;
 
 
-//스프링 빈에 등록 or @Component
-//springConfig.java
-//@Bean
-//public TimeTraceAop timeTraceAop() {
-//    return new TimeTraceAop();
-//}
+⚙️ 스프링 빈에 등록 or @Component
+📌 springConfig.java
+@Bean
+public TimeTraceAop timeTraceAop() {
+  return new TimeTraceAop();
+}
+
+
+📌 MemberService 수정
+package hello.hello_spring.service;
+
+import hello.hello_spring.domain.Member;
+import org.springframework.transaction.annotation.Transactional;
+import hello.hello_spring.repository.MemberRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
+import java.util.concurrent.Future;
+
+@Transactional
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+    /**
+     * 회원가입
+     */
+    public Long join(Member member) {
+            validateDuplicateMember(member); //중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+    }
+
+    private void validateDuplicateMember(Member member) {
+        memberRepository.findByName(member.getName())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
+    }
+
+    /**
+     * 전체 회원 조회
+     */
+    public List<Member> findMembers() {
+            return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(Long memberId) {
+        return memberRepository.findById(memberId);
+    }
+}
+
+💡 해결
+• 회원가입, 회원 조회등 핵심 관심사항과 시간을 측정하는 공통 관심 사항을 분리
+• 시간을 측정하는 로직을 별도의 공통 로직으로 만듬
+• 핵심 관심 사항을 깔끔하게 유지 가능
+• 변경이 필요하면 이 로직만 변경하면 됨
+• 원하는 적용 대상을 선택할 수 있음
