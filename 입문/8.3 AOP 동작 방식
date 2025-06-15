@@ -1,0 +1,11 @@
+AOP 적용 전 의존관계
+스프링 컨테이너
+(memberController ------> memberService)
+
+AOP 적용 후 의존관계
+스프링 컨테이너
+(memberController ------> 프록시<memberService> ----joinPoint.proceed()---> 실제 memberService
+
+AOP 적용 후 전체 그림
+스프링 컨테이너
+프록시<memberController> ---> memberController ---> 프록시<memberService> ---> 실제 memberService ---> 프록시<memberRepository> ---> 실제 memberRepository
