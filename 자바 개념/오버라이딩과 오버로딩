@@ -1,0 +1,62 @@
+✅ 오버라이딩 (Overriding) — "덮어쓰기"
+   부모(상위) 클래스의 메서드를 자식(하위) 클래스에서 같은 이름, 같은 매개변수로 다시 정의(덮어쓰기) 하는 것
+
+📌사용하는 이유
+부모의 기능을 그대로 쓰기엔 부족하거나, 자식 클래스에 맞게 기능을 바꾸고 싶을 때
+
+🔎 예시 
+class Animal {
+    void sound() {
+        System.out.println("동물이 소리를 낸다");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("멍멍!");
+    }
+}
+
+//🔑사용
+Animal myDog = new Dog();
+myDog.sound(); // 출력: 멍멍!
+→ 부모는 "동물 소리", 자식은 "멍멍"으로 바꿔 말함 (기능을 덮어씀)
+
+
+✅ 오버로딩 (Overloading) — "이름 재사용"
+   같은 이름의 메서드를 매개변수만 다르게 해서 여러 개 정의하는 것
+
+📌사용하는 이유
+같은 기능인데 입력이 다를 수 있을 때, 이름을 재사용하면 편함
+
+🔎예시
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+//🔑사용
+Calculator calc = new Calculator();
+calc.add(1, 2);         // 3
+calc.add(1.5, 2.5);     // 4.0
+calc.add(1, 2, 3);      // 6
+→ 이름은 add로 같지만, 매개변수가 달라서 각각 다른 버전이 실행됨
+
+🧠 요약 비교
+오버라이딩 (Overriding)   vs	 오버로딩 (Overloading)
+상속받은 메서드를 다시 정의	 vs  같은 이름의 메서드를 여러 개 정의
+부모 ↔ 자식 (상속 관계 필요) vs	 같은 클래스 내에서 사용 가능
+매개변수 동일해야 함	       vs  매개변수 다르게 해야 함
+기능 변경	               vs  편리한 메서드 사용
+
+⭐️ 오버라이딩은 ‘상속받은 기능을 바꾸는 것’,오버로딩은 ‘같은 이름으로 여러 기능을 쓰는 것’
