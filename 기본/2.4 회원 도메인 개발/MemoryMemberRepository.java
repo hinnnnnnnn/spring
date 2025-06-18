@@ -10,7 +10,7 @@ public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
 
-    @Override //option + enter : 메소드 구현
+    @Override //✅option + enter : 메소드 구현
     public void save(Member member) {
         store.put(member.getId(), member);
     }
