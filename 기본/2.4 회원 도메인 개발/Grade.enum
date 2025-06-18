@@ -1,0 +1,9 @@
+⛓️‍💥hello.core - member - Grade(Enum 생성)
+📌Grade.enum
+
+package hello.core.member;
+
+public enum Grade {
+    BASIC,
+    VIP
+}
