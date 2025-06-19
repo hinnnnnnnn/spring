@@ -1,5 +1,5 @@
-⛓️‍💥hello.core - order - order (클래스 생성)
-📌order.java
+⛓️‍💥hello.core - order - Order (클래스 생성)
+📌Order.java
   
 package hello.core.order;
 
