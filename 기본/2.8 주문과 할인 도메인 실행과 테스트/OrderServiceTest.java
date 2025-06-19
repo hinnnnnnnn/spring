@@ -1,6 +1,7 @@
 ⛓️‍💥test - hello.core - order - OrderServiceTest (클래스 생성)
 📌OrderServiceTest.java
-
+✅Junit 테스트로 검증
+    
 package hello.core.order;
 
 import hello.core.member.Grade;
