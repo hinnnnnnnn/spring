@@ -1,5 +1,6 @@
 ⛓️‍💥hello.core - OrderApp (클래스 생성)
 📌OrderApp.java
+✅자바로 작성 (스프링 없이 직접 의존성 주입(DI)을 수동으로 구현한 구조)
   
 package hello.core;
 
