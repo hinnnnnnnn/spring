@@ -1,0 +1,24 @@
+ 📌OrderServiceImpl 코드 수정
+ private final MemberRepository memberRepository = new MemoryMemberRepository();
+//private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); //⭐️추가⭐️
+
+🚨문제점 발견
+• 역할과 구현을 충실하게 분리함
+• 다형성도 활용하고, 인터페이스와 구현 객체를 분리함
+• OCP,DIP 같은 객체지향 설계 원칙을 충실히 준수함 -> 아님
+• DIP: 주문 서비스 클라이언트는 ‘DiscountPolicy’ 인터페이스에 의존하면서 DIP를 지킨것 같지만 추상(인터페이스) 뿐만 아니라 ‘구체(구현) 클래스에도 의존’ 하고 있음
+      추상(인터페이스) 의존: DiscountPolicy
+      구체(구현) 클래스: FixDiscountPolicy, RateDiscountPolicy
+• OCP: 지금 코드는 기능을 확장해서 변경하면, 클라이언트 코드에 영향을 줌 -> 위반
+
+✅문제 해결
+DIP을 위반하지 않도록 인터페이스에만 의존하도록 의존관계를 변경하면 됨
+
+📌OrderServiceImpl 코드 수정
+private final MemberRepository memberRepository = new MemoryMemberRepository();
+private DiscountPolicy discountPolicy; //⭐️추가⭐️
+
+-> 실제 실행을 해보면 NPE가 발생
+
+⚙️이 문제를 해결하려면 누군가 클라이언트인 OrderServiceImpl에 DiscountPolicy의 구현 객체를 대신 생성하고 주입해줘야함
