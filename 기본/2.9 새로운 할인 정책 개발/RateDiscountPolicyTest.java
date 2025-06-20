@@ -26,7 +26,7 @@ class RateDiscountPolicyTest {
         int discount = discountPolicy.discount(member, 10000);
 
         //then
-        assertThat(discount).isEqualTo(1000);
+        assertThat(discount).isEqualTo(1000); //할인 금액이 1000원 (10%)인지 검증 → 💯 성공하면 VIP에 대한 할인 정책이 정상 작동한다는 의미
     }
 
     @Test
@@ -39,6 +39,6 @@ class RateDiscountPolicyTest {
         int discount = discountPolicy.discount(member, 10000);
 
         //then
-        assertThat(discount).isEqualTo(0);
+        assertThat(discount).isEqualTo(0); //결과가 0인지 확인 → 💯 성공하면 VIP가 아닌 회원은 할인되지 않음을 보장
     }
 }
