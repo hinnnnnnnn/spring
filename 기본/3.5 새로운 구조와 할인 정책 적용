@@ -1,0 +1,16 @@
+📌AppConfing 수정
+
+ public DiscountPolicy discountPolicy() {
+        //return new FixDiscountPolicy();
+        //✅출력 결과 : order = Order{memberId=1, itemName='itemA', itemPrice=20000, discountPrice=1000}
+        return new RateDiscountPolicy(); //⭐️추가⭐️
+        //✅출력 결과 : order = Order{memberId=1, itemName='itemA', itemPrice=20000, discountPrice=2000}
+
+    }
+
+
+⛓️‍💥AppConfig에서 할인 정책 역할을 담당하는 구현을 FixDiscountPolicy -> RateDiscountPolicy로 변경
+• 할인 정책을 변경해도, 애플리케이션의 구성 역할을 담당하는 AppConfing만 변경하면 됨
+• 클라이언트 코드인 OrderServiceImpl을 포함해서 “사용 영역” 의 어떤 코드도 변경할 필요 없음
+• “구성 영역”은 당연히 변경됨, 구성 역할을 담당하는 AppConfig를 애플리케이션이라는 공연의 기획자로 생각
+  * 공연 기획자는 공연 참여자인 구현 객체들을 모두 알아야함
