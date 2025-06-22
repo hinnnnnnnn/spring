@@ -1,0 +1,33 @@
+📌AppConfig.java 코드 수정
+
+public class AppConfig {
+
+    public MemberService memberService() { //✅MemberServiceImpl 객체를 생성하며, 생성자에 MemberRepository를 주입
+        return new MemberServiceImpl(MemberRepository()); //MemberServiceImpl → MemoryMemberRepository를 의존하게 됨
+    }
+
+    private static MemoryMemberRepository MemberRepository() { //✅MemoryMemberRepository는 메모리에 회원 정보를 저장하는 구현 클래스
+        return new MemoryMemberRepository();
+    }
+
+    public OrderService orderService() { //✅OrderServiceImpl 객체를 생성하면서, 두 가지 구현 객체를 생성자에 주입
+        return new OrderServiceImpl(MemberRepository(), discountPolicy());
+    }
+    
+    public DiscountPolicy discountPolicy() { //✅할인 정책 구현체인 FixDiscountPolicy를 주입
+        return new FixDiscountPolicy(); 
+    }
+}
+
+💡 의존성 주입 방식 (생성자 주입)
+• new MemberServiceImpl(MemberRepository());
+• new OrderServiceImpl(MemberRepository(), discountPolicy());
+• 생성자를 통해 필요한 객체를 직접 전달(주입)함 → "생성자 주입"
+• 객체를 외부(AppConfig)에서 생성해서 연결만 해주는 방식 → "제어의 역전(IoC)", "DI"
+
+✅ 장점
+• new MemoryMemberRepository() 이 부분이 중복 제거 됨
+• MemoryMemberRepository를 다른 구현체로 변경할 때 한 부분만 변경하면 됨
+• AppConfig를 보면 역할과 구현 클래스가 한눈에 들어옴
+
+
