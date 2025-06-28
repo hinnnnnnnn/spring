@@ -1,5 +1,5 @@
 ⛓️‍💥test - singleton - SingletonTest
-📌SingletonTest.java에 추가
+📌SingletonTest.java에 추가 ("싱글톤 패턴을 적용한 객체 사용" 스프링 X)
   
   @Test
     @DisplayName("싱글톤 패턴을 적용한 객체 사용")
