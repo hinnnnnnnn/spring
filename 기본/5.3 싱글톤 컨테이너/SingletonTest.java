@@ -1,5 +1,5 @@
 ⛓️‍💥test - singleton - SingletonTest
-📌SingletonTest.java (스프링 컨테이너와 싱글톤)
+📌SingletonTest.java에 추가 ("스프링 컨테이너와 싱글톤" 스프링 O)
   
   @Test
     @DisplayName("스프링 컨테이너와 싱글톤")
