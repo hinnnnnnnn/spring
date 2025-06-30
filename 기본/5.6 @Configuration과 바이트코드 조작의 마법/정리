@@ -1,0 +1,17 @@
+// @Configuration
+🔎 @Configuration을 적용하지 않고, @Bean만 적용한다면? 
+   @Configuration을 붙이면 바이트코드를 조작하는 CGLIB 기술을 사용해서 싱글톤을 보장하지만, 만약 @Bean만 적용하면 어떻게 되는가?
+
+⭐️ 출력 결과 
+bean = class hello.core.AppConfig (싱글톤 깨짐)
+
+//call AppConfig.memberService
+//call AppConfig.memberRepository
+//call AppConfig.memberRepository
+//call AppConfig.orderService
+//call AppConfig.memberRepository
+
+
+📌 정리
+@Bean만 사용해도 스프링 빈으로 등록되지만, 싱글톤은 보장하지 않음
+memberRepository()처럼 의존관계 주입이 필요해서 메서드를 직접 호출할 떄 싱글톤을 보장하지 않음
