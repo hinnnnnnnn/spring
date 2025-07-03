@@ -1,3 +1,6 @@
+⛓️‍💥test - scan - filter - ComponentFilterAppConfigTest
+📌ComponentFilterAppConfigTest.java
+    
 package scan.filter;
 
 import org.assertj.core.api.Assertions;
