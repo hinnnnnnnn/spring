@@ -1,0 +1,19 @@
+4️⃣ 일반 메서드 주입
+• 한번에 여러 필드를 주입 받을 수 있음
+• 일반적으로 잘 사용하지 않음
+
+📌 OrderServiceImpl.java 수정
+@Component
+public class OrderServiceImpl implements OrderService{
+
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+    
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+⭐️ 의존관계 자동 주입은 스프링 컨테이너가 관리하는 스프링 빈이어야 동작함
+   스프링 빈이 아닌 'Member' 같은 클래스에서 @Autowired 코드를 적용해도 아무 기능도 동작하지 않음
