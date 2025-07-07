@@ -11,12 +11,25 @@ public class OrderServiceImpl implements OrderService{
 
     @Autowired
     public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-        System.out.println("discountPolicy = " + discountPolicy);
         this.discountPolicy = discountPolicy;
     }
 
     @Autowired
     public void setMemberRepository(MemberRepository memberRepository) {
-        System.out.println("memberRepository = " + memberRepository);
         this.memberRepository = memberRepository;
     }
+
+⭐️ @Autowired의 기본 동작은 주입할 대상이 없으면 오류가 발생함
+    주입할 대상이 없어도 동작하게 하려면 @Autowired(required = false)로 지정
+
+📌 자바빈 프로퍼티 규약 예시
+class Data {
+  private int age;
+  public void setAge(int age) {
+    this.age = age;
+}
+
+  public int getAge() {
+    return age;
+ }
+}
