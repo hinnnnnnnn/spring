@@ -1,0 +1,19 @@
+1️⃣ 생성자 주입
+• 생성자 호출시점에서 딱 1번만 호출되는 것이 보장됨
+• 불변, 필수 의존관계에 사용
+
+📌OrderServiceImpl.java 참고
+@Component
+public class OrderServiceImpl implements OrderService{
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+}
+
+⭐️ 생성자가 딱 1개만 있으면 @Autowired를 생략해도 자동 주입 됨 (스프링 빈에만 해당)
