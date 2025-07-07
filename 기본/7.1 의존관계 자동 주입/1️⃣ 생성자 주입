@@ -2,7 +2,7 @@
 • 생성자 호출시점에서 딱 1번만 호출되는 것이 보장됨
 • 불변, 필수 의존관계에 사용
 
-📌OrderServiceImpl.java 참고
+📌 OrderServiceImpl.java 참고
 @Component
 public class OrderServiceImpl implements OrderService{
 
