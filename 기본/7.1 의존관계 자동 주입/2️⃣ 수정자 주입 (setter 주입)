@@ -1,0 +1,22 @@
+2️⃣ 수정자 주입 (setter 주입)
+• 선택, 변경 가능성이 있는 의존관계에 사용
+• 자바빈 프로퍼티 규악의 수정자 메서드 방식을 사용하는 방법
+
+📌 OrderServiceImpl.java 수정
+@Component
+public class OrderServiceImpl implements OrderService{
+
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
