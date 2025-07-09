@@ -1,0 +1,4 @@
+💡 조회 대상 빈이 2개 이상일 때 해결 방법
+1️⃣ @Autowired 필드 명 매칭
+2️⃣ @Quilifier -> @Quilifier끼리 매칭 -> 빈 이름 매칭
+3️⃣ @Primary 사용
