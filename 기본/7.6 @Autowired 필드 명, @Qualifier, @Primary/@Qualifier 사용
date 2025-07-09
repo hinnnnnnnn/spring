@@ -1,0 +1,24 @@
+2️⃣ @Qualifier 사용
+@Qualifier는 추가 구분자를 붙여주는 방법, 주입 시 추가적인 방법을 제공하는 것이지 빈 이름을 변경하는 것은 아님
+
+✅'빈 등록시 @Qualifier를 붙여줌'
+@Component
+📌@Qualifier("fixDiscountPolicy")
+public class FixDiscountPolicy implements DiscountPolicy{
+
+@Component
+📌@Qualifier("mainDiscountPolicy")
+public class RateDiscountPolicy implements DiscountPolicy{
+
+✅'생성자 자동 주입 예시'
+public OrderServiceImpl(MemberRepository memberRepository, 📌@Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+@Qualifier는 Qualifier를 찾는 용도로만 사용하는게 명확하고 좋음
+
+⭐ 정리
+1. @Qualifier끼리 매칭
+2. 빈 이름 매칭
+3. NoSuchBeanDefinitionException 예외 발생
