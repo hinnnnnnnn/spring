@@ -1,0 +1,16 @@
+🔎 @Autowired는 타입으로 조회함
+    @Autowired
+    private MemberRepository memberRepository;
+
+🔎 스프링 빈 조회해서 학습했듯이 타입으로 조회하면 선택된 빈이 2개 이상일 때 문제 발생
+  'DiscountPolicy'의 하위 타입은 'FixDiscountPolicy', 'RateDiscountPolicy' 둘다 스프링 빈으로 선언
+  
+  1️⃣@Component
+  public class OrderServiceImpl implements OrderService{
+
+  2️⃣@Component
+  public class FixDiscountPolicy implements DiscountPolicy{
+
+🚨 오류 발생
+NoUniqueBeanDefinitionException: No qualifying bean of type 'hello.core.discount.DiscountPolicy' available: 
+expected single matching bean but found 2: fixDiscountPolicy,rateDiscountPolicy
