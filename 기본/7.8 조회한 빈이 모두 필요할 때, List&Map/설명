@@ -1,0 +1,12 @@
+⭐️ 로직 분석
+DiscountService는 Map으로 만든 DiscountPolicy를 주입 받음
+이때 fixDiscountPolicy, rateDiscountPolicy가 주입 됨
+
+discount() 메서드는 discountCode로 fixDiscountPolicy가 넘어오면 map에서 fixDiscountPolicy 스프링 빈을 찾아서 실행함
+물론 rateDiscountPolicy가 넘어오면 fixDiscountPolicy 스프링 빈을 찾아서 실행함
+
+
+⭐️ 주입 분석
+Map<String, DiscountPolicy> : map의 키에 스프링 빈이 이름을 넣어주고, 그 값으로 DiscountPolicy 타입으로 조회한 모든 스프링 빈을 담아줌
+List<DiscountPolicy> : DiscountPolicy 타입으로 조회한 모든 스프링 빈을 담아줌
+만약 해당하는 타입의 스프링 빈이 없으면, 빈 컬렉션이나 Map을 주입함
