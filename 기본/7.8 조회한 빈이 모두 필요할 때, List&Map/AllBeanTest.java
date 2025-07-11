@@ -26,12 +26,12 @@ public class AllBeanTest {
 
         DiscountService discountService = ac.getBean(DiscountService.class);
         Member member = new Member(1L, "userA", Grade.VIP);
-        int discountPrice = discountService.discount(member,10000,"fixDiscountPolicy");
+        int discountPrice = discountService.discount(member,10000,"fixDiscountPolicy"); //policyMap.get("fixDiscountPolicy")로 FixDiscountPolicy 사용 → 1000 할인
 
         assertThat(discountService).isInstanceOf(DiscountService.class);
         assertThat(discountPrice).isEqualTo(1000);
 
-        int rateDiscountPrice = discountService.discount(member,20000,"rateDiscountPolicy");
+        int rateDiscountPrice = discountService.discount(member,20000,"rateDiscountPolicy"); //RateDiscountPolicy 사용 → 2000 할인
         assertThat(rateDiscountPrice).isEqualTo(2000);
     }
 
@@ -40,7 +40,7 @@ public class AllBeanTest {
         private final List<DiscountPolicy> policies;
 
         @Autowired
-        public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policies) {
+        public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policies) { //DiscountService 생성자
             this.policyMap = policyMap;
             this.policies = policies;
             System.out.println("policyMap = " + policyMap);
@@ -48,7 +48,7 @@ public class AllBeanTest {
         }
 
         public int discount(Member member, int price, String discountCode) {
-            DiscountPolicy discountPolicy = policyMap.get(discountCode);
+            DiscountPolicy discountPolicy = policyMap.get(discountCode); 
             return discountPolicy.discount(member, price);
         }
     }
