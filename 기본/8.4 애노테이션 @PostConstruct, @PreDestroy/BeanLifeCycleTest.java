@@ -1,4 +1,4 @@
-BeanLifeCycleTest.java 수정
+📌 BeanLifeCycleTest.java 수정
   
 package hello.core.lifecycle;
 
