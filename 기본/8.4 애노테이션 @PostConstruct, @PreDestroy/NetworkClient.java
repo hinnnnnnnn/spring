@@ -1,4 +1,4 @@
-NetworkClient.java 수정
+📌NetworkClient.java 수정
   
 package hello.core.lifecycle;
 
@@ -42,11 +42,3 @@ public class NetworkClient {
         disconnect();
     }
 }
-
-
-/* 출력 결과
-생성자 호출, url = null
-connect: http://hello-spring.dev
-call: http://hello-spring.dev message = 초기화 연결 메시지
-close: http://hello-spring.dev
- */
