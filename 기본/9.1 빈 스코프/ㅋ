@@ -5,3 +5,15 @@
   request: 웹 요펑이 들어오고 나갈때 까지 유지되는 스코프
   sesstion: 웹 세션이 생성되고 종료될 때 까지 유지되는 스코프
   applicaiton: 웹의 서블릿 컨텍스와 같은 범위로 유지되는 스코프
+
+✅ 컴포넌트 스캔 자동 등록
+@Scope("prototype")
+@Component
+public class hell{}
+
+✅ 수동 등록
+@Scope("prototype")
+@Bean
+PrototypeBean hell0() {
+  return new hello();
+}
