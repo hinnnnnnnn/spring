@@ -17,3 +17,8 @@ public class hell{}
 PrototypeBean hell0() {
   return new hello();
 }
+
+
+⭐️ 빈 스코프
+"빈 스코프"는 프로그래밍에서 아무 코드도 없는 중괄호 {} 블록, 즉 내용이 비어 있는 코드 블록
+스코프(scope)는 변수나 함수 등의 유효 범위를 의미하고, "빈"은 말 그대로 "내용이 없다"는 뜻
