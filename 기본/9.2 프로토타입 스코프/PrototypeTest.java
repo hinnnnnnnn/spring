@@ -1,3 +1,6 @@
+⛓️‍💥test - hello.core - scope - PrototypeTest
+📌PrototypeTest.java
+    
 package hello.core.scope;
 
 import jakarta.annotation.PostConstruct;
@@ -35,7 +38,7 @@ public class PrototypeTest {
 
         @PreDestroy
         public void destroy() {
-            System.out.println("PrototypeBean.destroy"); //호출 안됨
+            System.out.println("PrototypeBean.destroy"); //⭐️호출 안됨⭐️
         }
     }
 }
