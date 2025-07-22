@@ -16,7 +16,16 @@ clientBean은 싱글톤이므로, 보통 스프링 컨테이너 생성 시점에
 5. 클라이언트 B는 clientBean.logic()을 호출함
 6. clientBean은 prototypeBean의 addCount()를 호출해서 프로토타입 빈의 count를 증가함, count값이 2이됨
 
+📌 상황 설명: 싱글톤 빈이 프로토타입 빈을 필드로 가질 때
+clientBean(싱글톤)은 처음 만들어질 때 한 번만 의존성 주입을 받음.
+이때 prototypeBean도 같이 주입되는데, 이건 딱 한 번 생성된 객체임.
+그 이후로는 clientBean이 가지고 있는 같은 프로토타입 객체를 계속 씀.
 
+🎯 그 결과는?
+A가 logic() 호출 → prototypeBean count 0 → 1
+B가 logic() 호출 → 같은 객체 사용 → count 1 → 2
+👉 프로토타입인데도 새 객체가 안 만들어지고 계속 같은 객체를 씀
+왜? 싱글톤은 생성 시점에 주입만 받고, 이후에는 같은 객체를 계속 사용하니까!
 
 
 
